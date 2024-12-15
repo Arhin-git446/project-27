@@ -1,0 +1,67 @@
+<html>  
+ <head>  
+    <title>Map and Arrange an Array</title>  
+     <style>  
+        body {  
+            font-family: Arial, sans-serif;  
+            padding: 20px;  
+            background-color: #f4f4f4;  
+        }  
+        h1 {  
+            text-align: center;  
+        }  
+        input, button {  
+            margin-top: 10px;  
+            padding: 10px;  
+            width: 100%;  
+        }  
+        .result {  
+            margin-top: 20px;  
+            padding: 15px;  
+            background-color: white;  
+            border: 1px solid #ccc;  
+        }  
+     </style>  
+ </head>  
+<body>  
+
+<h1>Map and Arrange an Array</h1>  
+<label for="arrayInput">Enter numbers (comma-separated):</label>  
+<input type="text" id="arrayInput" placeholder="e.g. 2, 5, 1, 4">  
+
+<label for="mapInput">Enter a number to map:</label>  
+<input type="number" id="mapInput" placeholder="e.g. 3">  
+
+<button onclick="processArray()">Map and Arrange</button>  
+
+<div class="result" id="resultContainer"></div>  
+
+<script>  
+    function processArray() {  
+        // Get the input values  
+        const arrayInput = document.getElementById('arrayInput').value;  
+        const mapInput = Number(document.getElementById('mapInput').value);  
+        
+        // Create and map the array  
+        let array = arrayInput.split(',').map(Number);  
+        let mappedArray = array.map(num => num * mapInput);  
+        
+        // Sort the mapped array in ascending and descending order  
+        const ascendingOrder = [...mappedArray].sort((a, b) => a - b);  
+        const descendingOrder = [...mappedArray].sort((a, b) => b - a);  
+        
+        // Display the results  
+        const resultContainer = document.getElementById('resultContainer');  
+        resultContainer.innerHTML = `  
+            <h2>Mapped Array:</h2>  
+            <p>Original Array: ${array}</p>  
+            <p>Mapped Array: ${mappedArray}</p>  
+            <h3>Sorted Arrays:</h3>  
+            <p>Ascending Order: ${ascendingOrder}</p>  
+            <p>Descending Order: ${descendingOrder}</p>  
+        `;  
+    }  
+</script>  
+
+</body>  
+</html>
